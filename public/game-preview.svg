@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#f9fafc" />
+  
+  <!-- Header Bar -->
+  <rect width="1200" height="60" fill="#4f46e5" />
+  <text x="40" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">Langame</text>
+  
+  <!-- Timer -->
+  <circle cx="600" cy="100" r="40" fill="#4f46e5" />
+  <text x="600" y="108" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">1:23</text>
+  
+  <!-- Player 1 -->
+  <rect x="150" y="180" width="350" height="400" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" />
+  <circle cx="325" cy="250" r="50" fill="#4f46e5" opacity="0.2" />
+  <text x="325" y="250" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4f46e5" text-anchor="middle">שחקן 1</text>
+  <text x="325" y="280" font-family="Arial, sans-serif" font-size="18" fill="#6b7280" text-anchor="middle">דרגה: 750</text>
+  
+  <!-- Player 1 Game Area -->
+  <rect x="175" y="320" width="300" height="200" rx="5" fill="#f3f4f6" />
+  <rect x="200" y="350" width="250" height="40" rx="5" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" />
+  <text x="325" y="375" font-family="Arial, sans-serif" font-size="16" fill="#374151" text-anchor="middle">cat</text>
+  <rect x="200" y="400" width="250" height="40" rx="5" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+  <text x="325" y="425" font-family="Arial, sans-serif" font-size="16" fill="#374151" text-anchor="middle">חתול</text>
+  <rect x="200" y="450" width="250" height="40" rx="5" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" />
+  
+  <!-- Player 2 -->
+  <rect x="700" y="180" width="350" height="400" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" />
+  <circle cx="875" cy="250" r="50" fill="#ef4444" opacity="0.2" />
+  <text x="875" y="250" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ef4444" text-anchor="middle">שחקן 2</text>
+  <text x="875" y="280" font-family="Arial, sans-serif" font-size="18" fill="#6b7280" text-anchor="middle">דרגה: 735</text>
+  
+  <!-- Player 2 Game Area -->
+  <rect x="725" y="320" width="300" height="200" rx="5" fill="#f3f4f6" />
+  <rect x="750" y="350" width="250" height="40" rx="5" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" />
+  <text x="875" y="375" font-family="Arial, sans-serif" font-size="16" fill="#374151" text-anchor="middle">book</text>
+  <rect x="750" y="400" width="250" height="40" rx="5" fill="#ffffff" stroke="#ef4444" stroke-width="2" />
+  <text x="875" y="425" font-family="Arial, sans-serif" font-size="16" fill="#374151" text-anchor="middle">ספר</text>
+  <rect x="750" y="450" width="250" height="40" rx="5" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" />
+  
+  <!-- Challenge Prompt -->
+  <rect x="350" y="600" width="500" height="50" rx="25" fill="#4f46e5" />
+  <text x="600" y="630" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">תרגם את המילים מאנגלית לעברית</text>
+</svg> 

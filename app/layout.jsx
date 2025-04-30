@@ -8,58 +8,9 @@ const rubik = Rubik({
 });
 
 export const metadata = {
-  title: {
-    default: "Cally | AI-Powered Calendar Assistant",
-    template: "%s | Cally",
-  },
+  title: "Langame | Language Learning Platform",
   description:
-    "Cally is an AI-powered calendar assistant that helps you organize your schedule efficiently with natural language processing and smart scheduling.",
-  keywords: [
-    "AI calendar",
-    "smart scheduling",
-    "calendar assistant",
-    "productivity",
-    "time management",
-    "AI scheduling",
-  ],
-  authors: [{ name: "Cally Team" }],
-  creator: "Cally",
-  publisher: "Cally",
-  metadataBase: new URL("https://cally.vercel.app"),
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://cally.vercel.app",
-    title: "Cally | AI-Powered Calendar Assistant",
-    description:
-      "Organize your schedule efficiently with Cally's AI-powered calendar assistant",
-    siteName: "Cally",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Cally - AI Calendar Assistant",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Cally | AI-Powered Calendar Assistant",
-    description:
-      "Organize your schedule efficiently with Cally's AI-powered calendar assistant",
-    images: ["/og-image.jpg"],
-    creator: "@callyapp",
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+    "Langame is a language learning platform that helps you learn languages efficiently with natural language processing and smart scheduling.",
 };
 
 export default function RootLayout({ children }) {

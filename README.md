@@ -1,3 +1,29 @@
+# Langame - A Multiplayer English Learning Game
+
+## Image Requirements
+
+To properly display the homepage, the following SVG images are included in the `/public` folder:
+
+1. `game-preview.svg` - A main visualization of the game in action
+2. `step1.svg` - Registration illustration
+3. `step2.svg` - Level test illustration
+4. `step3.svg` - Gameplay illustration
+5. `step4.svg` - Progress tracking illustration
+
+These SVG images are used in the homepage and provide scalable, responsive graphics.
+
+## About the Application
+
+Langame is a multiplayer game for learning English, featuring:
+
+- Real-time competitions
+- ELO-style ranking system
+- Word translation challenges
+- Sentence completion exercises
+- Personalized learning experience
+
+The website interface is in Hebrew while the learning content is in English.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
