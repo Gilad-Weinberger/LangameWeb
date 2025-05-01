@@ -1,9 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 const FormSignin = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +9,6 @@ const FormSignin = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [authError, setAuthError] = useState("");
   const { signInWithEmailPassword, signInWithGoogle } = useAuth();
-  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +17,7 @@ const FormSignin = () => {
 
     try {
       await signInWithEmailPassword(email, password);
-      router.push("/dashboard");
+      // Router navigation is handled in AuthContext
     } catch (error) {
       setAuthError(
         error.message.includes("auth/invalid-credential")
@@ -38,7 +35,7 @@ const FormSignin = () => {
 
     try {
       await signInWithGoogle();
-      router.push("/dashboard");
+      // Router navigation is handled in AuthContext
     } catch (error) {
       setAuthError("Failed to sign in with Google. Please try again.");
     } finally {

@@ -31,7 +31,7 @@ const FormSignup = () => {
 
     try {
       await signUpWithEmailPassword(email, password);
-      router.push("/dashboard");
+      // Router navigation is handled in AuthContext
     } catch (error) {
       if (error.message.includes("auth/email-already-in-use")) {
         setAuthError("Email is already in use. Please try another one.");
@@ -49,7 +49,7 @@ const FormSignup = () => {
 
     try {
       await signInWithGoogle();
-      router.push("/dashboard");
+      // Router navigation is handled in AuthContext
     } catch (error) {
       setAuthError("Failed to sign in with Google. Please try again.");
     } finally {

@@ -9,15 +9,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import {
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
+import { getUserByAuthId } from "@/lib/firestoreFunctions";
 import { useRouter } from "next/navigation";
 
 const AuthContext = createContext({});
@@ -54,7 +46,7 @@ export const AuthProvider = ({ children }) => {
         password
       );
       console.log("User created with email/password");
-      await createUser(userCredential.user);
+      router.push("/auth/details-form");
       return userCredential.user;
     } catch (error) {
       console.error("Error creating user with email/password:", error);
@@ -69,7 +61,6 @@ export const AuthProvider = ({ children }) => {
       const provider = new GoogleAuthProvider();
       const userCredential = await signInWithPopup(auth, provider);
       console.log("User signed in with Google");
-      await createUser(userCredential.user);
       return userCredential.user;
     } catch (error) {
       console.error("Error signing in with Google:", error);
@@ -88,26 +79,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  async function createUser(user) {
-    const userRef = doc(db, "users", user.uid);
-    const userDoc = await getDoc(userRef);
-
-    if (!userDoc.exists()) {
-      await setDoc(userRef, {
-        id: user.uid,
-        email: user.email,
-        createdAt: new Date().toISOString(),
-        role: "client",
-        username: "",
-        elo: 1200,
-      });
-      console.log("User created in the database.");
-      return true;
-    }
-    console.log("User already exists.");
-    return false;
-  }
-
   useEffect(() => {
     console.log("AuthContext - Setting up auth state listener");
 
@@ -117,15 +88,46 @@ export const AuthProvider = ({ children }) => {
         userId: user?.uid,
       });
 
+      const pathname = window.location.pathname;
+      console.log("AuthContext - Current pathname:", pathname);
+
       if (user) {
         setUser(user);
+
+        try {
+          const userData = await getUserByAuthId(user);
+
+          if (!userData) {
+            // User is authenticated but has no DB record (condition 1 only)
+            console.log(
+              "User authenticated but has no DB record, redirecting to details form"
+            );
+            // Only redirect if not already on details form
+            if (pathname !== "/auth/details-form") {
+              router.push("/auth/details-form");
+            }
+          } else {
+            // User is authenticated and has DB record (condition 1 and 2)
+            console.log(
+              "User authenticated and has DB record, redirecting to dashboard"
+            );
+            // Only redirect if not already on dashboard
+            if (pathname !== "/dashboard") {
+              router.push("/dashboard");
+            }
+          }
+        } catch (error) {
+          console.error("Error checking user in database:", error);
+          if (pathname !== "/auth/details-form") {
+            router.push("/auth/details-form");
+          }
+        }
       } else {
+        // User is not authenticated (neither condition)
         setUser(null);
-        const pathname = window.location.pathname;
-        console.log("AuthContext - No user, current pathname:", pathname);
 
         // Only redirect to signin if not already on an auth page or home
-        if (!pathname.startsWith("/auth/") && pathname !== "/") {
+        if (!pathname.startsWith("/auth/sign") && pathname !== "/") {
           console.log(
             "AuthContext - Redirecting to signin page from:",
             pathname
