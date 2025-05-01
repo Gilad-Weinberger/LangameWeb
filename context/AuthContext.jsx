@@ -98,6 +98,8 @@ export const AuthProvider = ({ children }) => {
         email: user.email,
         createdAt: new Date().toISOString(),
         role: "client",
+        username: "",
+        elo: 1200,
       });
       console.log("User created in the database.");
       return true;

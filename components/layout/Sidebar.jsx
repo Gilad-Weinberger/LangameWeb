@@ -1,52 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "../../context/AuthContext";
-
-const NavItem = ({ href, icon, children }) => (
-  <Link
-    href={href}
-    className="flex items-center py-3 px-4 text-text-primary hover:bg-main hover:text-bg rounded transition-colors"
-  >
-    <span className="mx-3">{icon}</span>
-    <span>{children}</span>
-  </Link>
-);
-
-const SettingsDropdown = () => {
-  const { logout } = useAuth();
-
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    await logout();
-    // Navigation is handled in AuthContext
-  };
-
-  return (
-    <div className="group relative">
-      <div className="flex items-center py-3 px-4 text-text-primary hover:bg-main hover:text-bg rounded transition-colors cursor-pointer">
-        <span className="mx-3">⚙️</span>
-        <span>הגדרות</span>
-      </div>
-      <div className="absolute hidden group-hover:block right-full bottom-0 ml-2 bg-bg border border-border rounded shadow-lg z-10">
-        <Link
-          href="/settings"
-          className="flex items-center px-4 py-2 text-text-primary hover:bg-main hover:text-bg whitespace-nowrap"
-        >
-          <span className="ml-2">⚙️</span>
-          כל ההגדרות
-        </Link>
-        <button
-          onClick={handleLogout}
-          className="flex items-center w-full text-right px-4 py-2 text-text-primary hover:bg-main hover:text-bg whitespace-nowrap"
-        >
-          <span className="ml-2">🚪</span>
-          התנתקות
-        </button>
-      </div>
-    </div>
-  );
-};
+import NavItem from "../sidebar/LinkItem";
+import SettingsDropdown from "../sidebar/SettingsDropdown";
 
 const Sidebar = () => {
   return (
@@ -59,7 +15,7 @@ const Sidebar = () => {
       </div>
       {/* Navigation */}
       <nav className="flex-1 px-2">
-        <NavItem href="/dashboard" icon="🎮">
+        <NavItem href="/play" icon="🎮">
           שחק
         </NavItem>
       </nav>

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#FAFBF9",
+        bg: "#fbfafa",
         main: "#3366CC",
         "main-hover": "#254A99",
         "text-primary": "#1F1F1F",
@@ -18,5 +18,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light"],
+  },
 };
