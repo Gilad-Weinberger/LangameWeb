@@ -47,6 +47,7 @@ const DetailsForm = () => {
         username: formData.username,
         fullName: formData.fullName,
         elo: formData.elo,
+        userId: user.uid, // Include the auth user ID
       });
 
       console.log("Profile successfully updated");
@@ -73,7 +74,6 @@ const DetailsForm = () => {
             prevStep={prevStep}
             setEloScore={setEloScore}
             submitForm={submitForm}
-            values={formData}
           />
         );
       default:

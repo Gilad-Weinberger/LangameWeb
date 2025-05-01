@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
 import NavItem from "../sidebar/LinkItem";
@@ -18,9 +19,15 @@ const Sidebar = () => {
         <NavItem href="/play" icon="🎮">
           שחק
         </NavItem>
+        <NavItem href="/learn" icon="📚">
+          למד
+        </NavItem>
       </nav>
       {/* Bottom settings */}
       <div className="px-4 pt-4">
+        <NavItem href="/feedback" icon="💡">
+          פידבק
+        </NavItem>
         <SettingsDropdown />
       </div>
     </div>

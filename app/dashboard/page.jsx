@@ -18,7 +18,6 @@ const Dashboard = () => {
         try {
           const userData = await getUserByAuthId(authUser);
           setUser(userData);
-          console.log(userData);
         } catch (error) {
           console.error("Error fetching user data:", error);
         } finally {

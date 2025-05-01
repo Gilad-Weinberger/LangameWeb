@@ -1,11 +1,12 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import PageLayout from "@/components/layout/PageLayout";
 import { useAuth } from "@/context/AuthContext";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
+import PageLayout from "@/components/layout/PageLayout";
 import ButtonSession from "@/components/shared/ButtonSession";
 
-const Play = () => {
+const page = () => {
   const { user: authUser } = useAuth();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,20 +30,20 @@ const Play = () => {
     fetchUserData();
   }, [authUser]);
 
-  const handleGameClick = () => {
-    console.log("Game clicked");
+  const handleFlashcardsClick = () => {
+    console.log("Flashcards clicked");
   };
 
   return (
     <PageLayout>
       <div className="flex flex-col items-center justify-center w-full h-full">
-        <p className="text-4xl font-medium mb-5">שחק</p>
+        <p className="text-4xl font-medium mb-5">למד</p>
         <div className="flex flex-col items-center gap-3 w-[40%]">
           <ButtonSession
-            handleClick={handleGameClick}
+            handleClick={handleFlashcardsClick}
             image="/lightning.svg"
-            text="התחל משחק"
-            subText="שחק בהצלחה!"
+            text="כרטיסי למידה"
+            subText="למד בצורה מהירה וקלה"
           />
         </div>
       </div>
@@ -50,4 +51,4 @@ const Play = () => {
   );
 };
 
-export default Play;
+export default page;

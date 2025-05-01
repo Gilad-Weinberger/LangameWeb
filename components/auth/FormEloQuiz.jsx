@@ -15,7 +15,7 @@ const quizQuestions = [
   },
 ];
 
-const FormEloQuiz = ({ prevStep, setEloScore, submitForm, values }) => {
+const FormEloQuiz = ({ prevStep, setEloScore, submitForm}) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [completed, setCompleted] = useState(false);

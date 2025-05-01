@@ -106,15 +106,6 @@ export const AuthProvider = ({ children }) => {
             if (pathname !== "/auth/details-form") {
               router.push("/auth/details-form");
             }
-          } else {
-            // User is authenticated and has DB record (condition 1 and 2)
-            console.log(
-              "User authenticated and has DB record, redirecting to dashboard"
-            );
-            // Only redirect if not already on dashboard
-            if (pathname !== "/dashboard") {
-              router.push("/dashboard");
-            }
           }
         } catch (error) {
           console.error("Error checking user in database:", error);
