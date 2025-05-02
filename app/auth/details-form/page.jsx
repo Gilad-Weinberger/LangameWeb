@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import PageLayout from "@/components/layout/PageLayout";
-import FormUserDetails from "@/components/auth/FormUserDetails";
-import FormEloQuiz from "@/components/auth/FormEloQuiz";
+import FormUserDetails from "@/components/auth/details-form/FormUserDetails";
+import FormEloQuiz from "@/components/auth/details-form/FormEloQuiz";
+import FormTopics from "@/components/auth/details-form/FormTopics";
+import FormCompletion from "@/components/auth/details-form/FormCompletion";
 import { saveUserObject } from "@/lib/firestoreFunctions";
 
 const DetailsForm = () => {
@@ -16,7 +18,9 @@ const DetailsForm = () => {
     fullName: "",
     username: "",
     elo: 1200, // Default starting Elo
+    topics: [], // Array to store selected topics
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -40,6 +44,14 @@ const DetailsForm = () => {
     setFormData({ ...formData, elo: score });
   };
 
+  const handleTopicsChange = (selectedTopics) => {
+    setFormData({ ...formData, topics: selectedTopics });
+  };
+
+  const handleSubmitForm = async () => {
+    setIsSubmitted(true);
+  };
+
   const submitForm = async () => {
     try {
       // Save user profile to Firestore
@@ -47,6 +59,7 @@ const DetailsForm = () => {
         username: formData.username,
         fullName: formData.fullName,
         elo: formData.elo,
+        topics: formData.topics, // Include selected topics
         userId: user.uid, // Include the auth user ID
       });
 
@@ -59,6 +72,10 @@ const DetailsForm = () => {
   };
 
   const renderStep = () => {
+    if (isSubmitted) {
+      return <FormCompletion submitForm={submitForm} />;
+    }
+
     switch (step) {
       case 1:
         return (
@@ -72,8 +89,17 @@ const DetailsForm = () => {
         return (
           <FormEloQuiz
             prevStep={prevStep}
+            nextStep={nextStep}
             setEloScore={setEloScore}
-            submitForm={submitForm}
+          />
+        );
+      case 3:
+        return (
+          <FormTopics
+            prevStep={prevStep}
+            nextStep={handleSubmitForm}
+            handleTopicsChange={handleTopicsChange}
+            selectedTopics={formData.topics}
           />
         );
       default:
@@ -87,18 +113,25 @@ const DetailsForm = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">השלם את הפרופיל שלך</h1>
-            <div className="flex items-center gap-2">
-              <div
-                className={`w-3 h-3 rounded-full ${
-                  step === 1 ? "bg-main" : "bg-gray-300"
-                }`}
-              ></div>
-              <div
-                className={`w-3 h-3 rounded-full ${
-                  step === 2 ? "bg-main" : "bg-gray-300"
-                }`}
-              ></div>
-            </div>
+            {!isSubmitted && (
+              <div className="flex items-center gap-2">
+                <div
+                  className={`w-3 h-3 rounded-full ${
+                    step === 1 ? "bg-main" : "bg-gray-300"
+                  }`}
+                ></div>
+                <div
+                  className={`w-3 h-3 rounded-full ${
+                    step === 2 ? "bg-main" : "bg-gray-300"
+                  }`}
+                ></div>
+                <div
+                  className={`w-3 h-3 rounded-full ${
+                    step === 3 ? "bg-main" : "bg-gray-300"
+                  }`}
+                ></div>
+              </div>
+            )}
           </div>
         </div>
 

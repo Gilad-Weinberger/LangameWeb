@@ -34,6 +34,10 @@ const page = () => {
     console.log("Flashcards clicked");
   };
 
+  const handleQuizClick = () => {
+    console.log("Quiz clicked");
+  };
+
   return (
     <PageLayout>
       <div className="flex flex-col items-center justify-center w-full h-full">
@@ -44,6 +48,12 @@ const page = () => {
             image="/lightning.svg"
             text="כרטיסי למידה"
             subText="למד בצורה מהירה וקלה"
+          />
+          <ButtonSession
+            handleClick={handleQuizClick}
+            image="/lightning.svg"
+            text="מבחן"
+            subText="בדוק את יכולותך בכל נושא"
           />
         </div>
       </div>
