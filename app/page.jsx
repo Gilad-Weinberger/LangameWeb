@@ -5,27 +5,27 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 overflow-hidden md:pt-40 md:pb-24">
+      <section className="relative pt-16 pb-12 overflow-hidden md:pt-24 md:pb-20">
         <div className="container px-4 mx-auto text-center max-w-7xl">
-          <div className="relative z-10 max-w-2xl mx-auto mb-10 md:mb-16">
-            <h1 className="mb-6 text-4xl font-bold leading-tight text-gray-900 md:text-6xl md:leading-tight">
+          <div className="relative z-10 max-w-2xl mx-auto mb-8 md:mb-12">
+            <h1 className="mb-4 text-3xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl md:leading-tight">
               שפר את האנגלית שלך בדרך{" "}
               <span className="text-indigo-600">מהנה ותחרותית</span>
             </h1>
-            <p className="mb-8 text-lg text-gray-600 md:text-xl">
+            <p className="mb-6 text-base text-gray-600 md:text-lg lg:text-xl">
               למד אנגלית בזמן אמת עם שחקנים אחרים, שפר את הדירוג שלך וראה את
               ההתקדמות שלך מיום ליום.
             </p>
-            <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
+            <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
               <Link
                 href="/auth/signup"
-                className="px-8 py-4 text-lg font-medium text-white transition-all rounded-full bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="w-full px-6 py-3 text-base font-medium text-white transition-all rounded-full bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:w-auto md:text-lg"
               >
                 התחל לשחק בחינם
               </Link>
               <Link
                 href="/auth/signin"
-                className="px-8 py-4 text-lg font-medium transition-all border border-gray-300 rounded-full text-indigo-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="w-full px-6 py-3 mt-3 text-base font-medium transition-all border border-gray-300 rounded-full text-indigo-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:w-auto md:mt-0 md:text-lg"
               >
                 התחברות
               </Link>
@@ -70,24 +70,24 @@ export default function Home() {
       </section>
 
       {/* Problem-Solution Section */}
-      <section className="py-16 bg-white md:py-24">
+      <section className="py-12 bg-white md:py-20">
         <div className="container px-4 mx-auto max-w-7xl">
-          <div className="max-w-3xl mx-auto mb-16 text-center">
-            <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+          <div className="max-w-3xl mx-auto mb-10 text-center md:mb-16">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl lg:text-4xl">
               למידת אנגלית לא חייבת להיות משעממת
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600 md:text-lg">
               הגישה המסורתית ללימוד אנגלית יכולה להיות יבשה ולא מעניינת. אנחנו
               פתרנו את הבעיה הזו עם משחק מולטיפלייר מהנה.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div className="p-8 transition-all border border-gray-100 rounded-xl hover:shadow-lg">
-              <div className="flex items-center justify-center w-16 h-16 mb-6 text-white bg-red-500 rounded-lg">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            <div className="p-6 transition-all border border-gray-100 rounded-xl hover:shadow-lg md:p-8">
+              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white bg-red-500 rounded-lg md:w-16 md:h-16 md:mb-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8"
+                  className="w-6 h-6 md:w-8 md:h-8"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -100,10 +100,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-4 text-xl font-semibold text-gray-900">
+              <h3 className="mb-3 text-lg font-semibold text-gray-900 md:text-xl">
                 הבעיה
               </h3>
-              <ul className="space-y-3 text-gray-600 list-disc list-inside">
+              <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside md:text-base md:space-y-3">
                 <li>לימוד אנגלית לבד יכול להיות משעמם</li>
                 <li>קשה להתמיד בלימוד ללא מוטיבציה</li>
                 <li>קשה לראות התקדמות אמיתית</li>
@@ -111,11 +111,11 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="p-8 transition-all border border-gray-100 rounded-xl hover:shadow-lg">
-              <div className="flex items-center justify-center w-16 h-16 mb-6 text-white bg-green-500 rounded-lg">
+            <div className="p-6 transition-all border border-gray-100 rounded-xl hover:shadow-lg md:p-8">
+              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white bg-green-500 rounded-lg md:w-16 md:h-16 md:mb-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8"
+                  className="w-6 h-6 md:w-8 md:h-8"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -128,10 +128,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-4 text-xl font-semibold text-gray-900">
+              <h3 className="mb-3 text-lg font-semibold text-gray-900 md:text-xl">
                 הפתרון שלנו
               </h3>
-              <ul className="space-y-3 text-gray-600 list-disc list-inside">
+              <ul className="space-y-2 text-sm text-gray-600 list-disc list-inside md:text-base md:space-y-3">
                 <li>משחק תחרותי מהנה במודל מולטיפלייר</li>
                 <li>מערכת דירוג שמראה את ההתקדמות שלך</li>
                 <li>אתגרים יומיים ושבועיים לשמירה על מוטיבציה</li>
@@ -143,24 +143,24 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50 md:py-24">
+      <section className="py-12 bg-gray-50 md:py-20">
         <div className="container px-4 mx-auto max-w-7xl">
-          <div className="max-w-3xl mx-auto mb-16 text-center">
-            <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+          <div className="max-w-3xl mx-auto mb-10 text-center md:mb-16">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl lg:text-4xl">
               תכונות עיקריות
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600 md:text-lg">
               הפלטפורמה שלנו מציעה מגוון תכונות שיעזרו לך לשפר את האנגלית שלך
               בצורה יעילה ומהנה
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white rounded-full bg-indigo-600">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8">
+            <div className="p-4 bg-white rounded-lg shadow-sm md:p-6">
+              <div className="flex items-center justify-center w-10 h-10 mb-3 text-white rounded-full bg-indigo-600 md:w-12 md:h-12 md:mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -173,19 +173,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 md:text-xl">
                 משחק מולטיפלייר
               </h3>
-              <p className="text-gray-600">
+              <p className="text-sm text-gray-600 md:text-base">
                 התחרה מול שחקנים אחרים בזמן אמת לתרגול והנאה משותפת.
               </p>
             </div>
 
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white rounded-full bg-indigo-600">
+            <div className="p-4 bg-white rounded-lg shadow-sm md:p-6">
+              <div className="flex items-center justify-center w-10 h-10 mb-3 text-white rounded-full bg-indigo-600 md:w-12 md:h-12 md:mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -198,19 +198,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 md:text-xl">
                 שיפור אוצר מילים
               </h3>
-              <p className="text-gray-600">
-                למד מילים חדשות באנגלית דרך תרגול חוויתי במגוון נושאים.
+              <p className="text-sm text-gray-600 md:text-base">
+                למד מילים חדשות בהקשר משחקי שיעזור לך לזכור אותן לזמן רב.
               </p>
             </div>
 
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white rounded-full bg-indigo-600">
+            <div className="p-4 bg-white rounded-lg shadow-sm md:p-6">
+              <div className="flex items-center justify-center w-10 h-10 mb-3 text-white rounded-full bg-indigo-600 md:w-12 md:h-12 md:mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -223,19 +223,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 md:text-xl">
                 דירוג ומעקב
               </h3>
-              <p className="text-gray-600">
+              <p className="text-sm text-gray-600 md:text-base">
                 צבור נקודות, שפר את הדירוג שלך ועקוב אחר ההתקדמות שלך לאורך זמן.
               </p>
             </div>
 
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white rounded-full bg-indigo-600">
+            <div className="p-4 bg-white rounded-lg shadow-sm md:p-6">
+              <div className="flex items-center justify-center w-10 h-10 mb-3 text-white rounded-full bg-indigo-600 md:w-12 md:h-12 md:mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -248,19 +248,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 md:text-xl">
                 אתגרי תרגום
               </h3>
-              <p className="text-gray-600">
+              <p className="text-sm text-gray-600 md:text-base">
                 תרגם מילים ומשפטים מעברית לאנגלית ולהיפך בזמן מוגבל.
               </p>
             </div>
 
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white rounded-full bg-indigo-600">
+            <div className="p-4 bg-white rounded-lg shadow-sm md:p-6">
+              <div className="flex items-center justify-center w-10 h-10 mb-3 text-white rounded-full bg-indigo-600 md:w-12 md:h-12 md:mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -273,19 +273,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 md:text-xl">
                 השלמת משפטים
               </h3>
-              <p className="text-gray-600">
+              <p className="text-sm text-gray-600 md:text-base">
                 השלם את החלקים החסרים במשפטים באנגלית ושפר את הבנת הקריאה שלך.
               </p>
             </div>
 
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 mb-4 text-white rounded-full bg-indigo-600">
+            <div className="p-4 bg-white rounded-lg shadow-sm md:p-6">
+              <div className="flex items-center justify-center w-10 h-10 mb-3 text-white rounded-full bg-indigo-600 md:w-12 md:h-12 md:mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5 md:w-6 md:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -298,10 +298,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 md:text-xl">
                 התאמה אישית
               </h3>
-              <p className="text-gray-600">
+              <p className="text-sm text-gray-600 md:text-base">
                 המערכת מתאימה את רמת הקושי לרמה האישית שלך לחוויית למידה מיטבית.
               </p>
             </div>

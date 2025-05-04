@@ -44,7 +44,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        Loading...
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
       </div>
     );
   }
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
   return (
     <PageLayout>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full overflow-hidden">
             <Image
@@ -67,13 +67,22 @@ const Dashboard = () => {
             />
           </div>
           <div>
-            {user && <p className="text-xl font-medium">{user.username}</p>}
+            {user && (
+              <p className="text-lg sm:text-xl font-medium">{user.username}</p>
+            )}
           </div>
         </div>
-        <p className="text-xl font-medium" dir="ltr">
-          {user?.elo || 0} Elo
-        </p>
+        <div className="bg-indigo-50 px-4 py-2 rounded-lg self-start sm:self-auto">
+          <p
+            className="text-lg sm:text-xl font-medium text-indigo-600"
+            dir="ltr"
+          >
+            {user?.elo || 0} Elo
+          </p>
+        </div>
       </div>
+
+      {/* Add other dashboard content here with proper mobile responsiveness */}
     </PageLayout>
   );
 };

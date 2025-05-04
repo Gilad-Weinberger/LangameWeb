@@ -33,17 +33,29 @@ const Play = () => {
     console.log("Game clicked");
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
+
   return (
     <PageLayout>
-      <div className="flex flex-col items-center justify-center w-full h-full">
-        <p className="text-4xl font-medium mb-5">שחק</p>
-        <div className="flex flex-col items-center gap-3 w-[40%]">
+      <div className="flex flex-col items-center justify-start min-h-[calc(100vh-4rem)] w-full px-4 py-6 md:py-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900">
+          שחק
+        </h1>
+        <div className="w-full max-w-md mx-auto space-y-4">
           <ButtonSession
             handleClick={handleGameClick}
             image="/lightning.svg"
             text="התחל משחק"
             subText="שחק בהצלחה!"
+            className="transform transition-transform hover:scale-105"
           />
+          {/* Add more game options here */}
         </div>
       </div>
     </PageLayout>
