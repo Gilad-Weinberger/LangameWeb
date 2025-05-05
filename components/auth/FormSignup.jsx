@@ -19,12 +19,12 @@ const FormSignup = () => {
     setAuthError("");
 
     if (password !== confirmPassword) {
-      setAuthError("Passwords do not match");
+      setAuthError("הסיסמאות אינן תואמות");
       return;
     }
 
     if (password.length < 6) {
-      setAuthError("Password must be at least 6 characters");
+      setAuthError("הסיסמה חייבת להכיל לפחות 6 תווים");
       return;
     }
 
@@ -35,9 +35,9 @@ const FormSignup = () => {
       // Router navigation is handled in AuthContext
     } catch (error) {
       if (error.message.includes("auth/email-already-in-use")) {
-        setAuthError("Email is already in use. Please try another one.");
+        setAuthError("האימייל כבר בשימוש. אנא נסה אימייל אחר.");
       } else {
-        setAuthError("Failed to create account. Please try again.");
+        setAuthError("יצירת החשבון נכשלה. אנא נסה שוב.");
       }
     } finally {
       setIsSubmitting(false);
@@ -52,23 +52,26 @@ const FormSignup = () => {
       await signInWithGoogle();
       // Router navigation is handled in AuthContext
     } catch (error) {
-      setAuthError("Failed to sign in with Google. Please try again.");
+      setAuthError("התחברות עם גוגל נכשלה. אנא נסה שוב.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-lg">
+    <div
+      dir="rtl"
+      className="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-lg"
+    >
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900">Create an account</h1>
+        <h1 className="text-3xl font-bold text-gray-900">צור חשבון</h1>
         <p className="mt-2 text-sm text-gray-600">
-          Sign up to get started with our platform
+          הירשם כדי להתחיל להשתמש בפלטפורמה שלנו
         </p>
       </div>
 
       {authError && (
-        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">
+        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md text-right">
           {authError}
         </div>
       )}
@@ -77,9 +80,9 @@ const FormSignup = () => {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 text-right"
           >
-            Email address
+            כתובת אימייל
           </label>
           <input
             id="email"
@@ -89,7 +92,7 @@ const FormSignup = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="block w-full px-4 py-3 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="block w-full px-4 py-3 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-right"
             placeholder="you@example.com"
           />
         </div>
@@ -97,9 +100,9 @@ const FormSignup = () => {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 text-right"
           >
-            Password
+            סיסמה
           </label>
           <input
             id="password"
@@ -109,17 +112,17 @@ const FormSignup = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="block w-full px-4 py-3 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="At least 6 characters"
+            className="block w-full px-4 py-3 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-right"
+            placeholder="לפחות 6 תווים"
           />
         </div>
 
         <div>
           <label
             htmlFor="confirmPassword"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 text-right"
           >
-            Confirm Password
+            אימות סיסמה
           </label>
           <input
             id="confirmPassword"
@@ -129,8 +132,8 @@ const FormSignup = () => {
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="block w-full px-4 py-3 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Confirm your password"
+            className="block w-full px-4 py-3 mt-1 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-right"
+            placeholder="אשר את הסיסמה שלך"
           />
         </div>
 
@@ -140,7 +143,7 @@ const FormSignup = () => {
             disabled={isSubmitting}
             className="flex justify-center w-full px-4 py-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "Creating account..." : "Create account"}
+            {isSubmitting ? "יוצר חשבון..." : "צור חשבון"}
           </button>
         </div>
       </form>
@@ -150,24 +153,24 @@ const FormSignup = () => {
           <div className="w-full border-t border-gray-300"></div>
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="px-3 text-gray-500 bg-white">Or continue with</span>
+          <span className="px-3 text-gray-500 bg-white">או המשך עם</span>
         </div>
       </div>
 
       <ButtonGoogleAuth
         onClick={handleGoogleSignIn}
         isSubmitting={isSubmitting}
-        buttonText="Sign up with Google"
+        buttonText="הירשם עם גוגל"
       />
 
       <div className="text-center mt-6">
         <p className="text-sm text-gray-600">
-          Already have an account?{" "}
+          כבר יש לך חשבון?{" "}
           <Link
             href="/auth/signin"
             className="font-medium text-indigo-600 hover:text-indigo-500"
           >
-            Sign in
+            התחבר
           </Link>
         </p>
       </div>

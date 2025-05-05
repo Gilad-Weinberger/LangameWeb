@@ -15,23 +15,27 @@ export default function AuthLayout({ children }) {
   }, [user, loading, router]);
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div
+      dir="rtl"
+      className="flex min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50"
+    >
       <div className="hidden lg:flex lg:w-1/2 bg-indigo-600 items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700 opacity-90"></div>
         <div className="absolute inset-0 bg-grid-white/[0.05]"></div>
-        <div className="z-10 max-w-md p-12 text-white">
-          <h1 className="text-4xl font-bold mb-6">Welcome to Langame</h1>
+        <div className="z-10 max-w-md p-12 text-white text-right">
+          <h1 className="text-4xl font-bold mb-6">ברוכים הבאים ל-Langame</h1>
           <p className="text-lg opacity-90 mb-8">
-            Join our platform and start your journey with us. Discover new
-            opportunities and connect with others in our community.
+            הצטרפו לפלטפורמה שלנו והתחילו את המסע שלכם איתנו. גלו הזדמנויות
+            חדשות והתחברו עם אחרים בקהילה שלנו.
           </p>
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 space-x-reverse">
             <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur"></div>
             <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur"></div>
             <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur"></div>
           </div>
         </div>
       </div>
+
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         {children}
       </div>
