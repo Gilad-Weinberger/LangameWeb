@@ -14,6 +14,7 @@ const FastGame = () => {
   const [room, setRoom] = useState(null);
   const [opponent, setOpponent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchUserData() {
@@ -37,11 +38,19 @@ const FastGame = () => {
   useEffect(() => {
     const fetchRoom = async () => {
       if (!id || !user) return;
-      
+
+      console.log("user", user);
+      console.log("id", id);
+
       try {
         const roomData = await getRoom(id);
         setRoom(roomData);
-        
+
+        // Check if the current user is part of this room
+        if (roomData && roomData.users && !roomData.users.includes(user.id)) {
+          router.push("/play");
+        }
+
         if (roomData) {
           const opponentId = await getRoomOpponent(id, user.id);
           if (opponentId) {
@@ -53,7 +62,7 @@ const FastGame = () => {
         console.error("Error fetching room or opponent:", error);
       }
     };
-    
+
     if (user && id) {
       fetchRoom();
     }
