@@ -30,7 +30,7 @@ const FastGame = () => {
     fetchRoom();
   }, [id]);
 
-  return <div>FastGame</div>;
+  return <div>FastGame3</div>;
 };
 
 export default FastGame;
