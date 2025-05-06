@@ -4,6 +4,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import { useAuth } from "@/context/AuthContext";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
 import ButtonSession from "@/components/shared/ButtonSession";
+import { getRoomReadyForGame } from "@/lib/fastGameFunctions";
 
 const Play = () => {
   const { user: authUser } = useAuth();
@@ -29,8 +30,16 @@ const Play = () => {
     fetchUserData();
   }, [authUser]);
 
-  const handleGameClick = () => {
-    console.log("Game clicked");
+  const handleGameClick = async () => {
+    if (user) {
+      const room = await getRoomReadyForGame(user);
+      if (room) {
+        console.log(room);
+        router.push(`/play/fastGame/${room.id}`);
+      } else {
+        console.log("No valid room found, try again later");
+      }
+    }
   };
 
   if (loading) {
