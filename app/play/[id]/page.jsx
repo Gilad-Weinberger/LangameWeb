@@ -4,15 +4,17 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { getRoom, getRoomOpponent } from "@/lib/fastGameFunctions";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
+import PageLayout from "@/components/layout/PageLayout";
 
-const FastGame = ({ params }) => {
+// Create a component that properly uses the params
+export default function GamePage({ params }) {
+  // We don't need to use React.use() in this approach, as params is passed as a prop
+  const id = params.id;
   const { user: authUser } = useAuth();
   const [user, setUser] = useState(null);
-  const id = params?.id;
   const [room, setRoom] = useState(null);
   const [opponent, setOpponent] = useState(null);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchUserData() {
@@ -36,19 +38,12 @@ const FastGame = ({ params }) => {
   useEffect(() => {
     const fetchRoom = async () => {
       if (!id || !user) return;
-
-      console.log("user", user);
-      console.log("id", id);
-
+      
       try {
+        console.log(`Fetching room data for ID: ${id}`);
         const roomData = await getRoom(id);
         setRoom(roomData);
-
-        // Check if the current user is part of this room
-        if (roomData && roomData.users && !roomData.users.includes(user.id)) {
-          router.push("/play");
-        }
-
+        
         if (roomData) {
           const opponentId = await getRoomOpponent(id, user.id);
           if (opponentId) {
@@ -60,7 +55,7 @@ const FastGame = ({ params }) => {
         console.error("Error fetching room or opponent:", error);
       }
     };
-
+    
     if (user && id) {
       fetchRoom();
     }
@@ -74,7 +69,29 @@ const FastGame = ({ params }) => {
     );
   }
 
-  return <div>FastGame - Room ID: {id}</div>;
-};
+  if (!room) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <h1 className="text-2xl font-bold mb-4">חדר לא נמצא</h1>
+        <p>החדר שחיפשת לא נמצא או שאינו זמין יותר.</p>
+      </div>
+    );
+  }
 
-export default FastGame;
+  return (
+    <PageLayout>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <h1 className="text-2xl font-bold mb-4">חדר משחק: {id}</h1>
+      {opponent && (
+        <div className="mb-4">
+          <p>מתמודד: {opponent.username || opponent.id}</p>
+          <p>דירוג: {opponent.elo}</p>
+        </div>
+      )}
+      <div className="p-4 border rounded-lg">
+        <p>סטטוס משחק: {room.gameData?.state}</p>
+        <p>מספר שחקנים: {room.userCount}</p>
+      </div>
+    </div></PageLayout>
+  );
+}
