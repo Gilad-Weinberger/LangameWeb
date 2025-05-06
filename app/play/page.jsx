@@ -38,7 +38,7 @@ const Play = () => {
       const room = await getRoomReadyForGame(user);
       if (room) {
         console.log(room);
-        router.push(`/play/fastGame/${room.id}`);
+        router.push(`/play/${room.id}`);
       } else {
         console.log("No valid room found, try again later");
       }
