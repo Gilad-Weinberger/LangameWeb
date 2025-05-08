@@ -5,6 +5,7 @@ import { useAuth } from "@/context/AuthContext";
 import { getRoom, getRoomOpponent } from "@/lib/fastGameFunctions";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
 import PageLayout from "@/components/layout/PageLayout";
+import Image from "next/image";
 
 // Create a component that properly uses the params
 export default function GamePage({ params }) {
@@ -18,6 +19,7 @@ export default function GamePage({ params }) {
   useEffect(() => {
     async function fetchUserData() {
       if (authUser) {
+        console.log("Fetching user data for ID:", authUser);
         try {
           const userData = await getUserByAuthId(authUser);
           setUser(userData);
@@ -79,17 +81,31 @@ export default function GamePage({ params }) {
 
   return (
     <PageLayout>
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-2xl font-bold mb-4">חדר משחק: {id}</h1>
-        {opponent && (
-          <div className="mb-4">
-            <p>מתמודד: {opponent.username || opponent.id}</p>
-            <p>דירוג: {opponent.elo}</p>
+      <div className="flex w-full h-full">
+        <div className="flex flex-1 flex-col items-center justify-center min-h-screen p-4">
+          <h1 className="text-2xl font-bold mb-4">חדר משחק: {id}</h1>
+        </div>
+        <div className="flex border-r border-gray-300 flex-col items-center min-h-screen py-4 pl-8 pr-24">
+          <div className="flex items-center justify-between w-full">
+            <div className="flex flex-col items-center">
+              <p className="text-md font-semibold">{user?.username}</p>
+              <p className="text-sm text-gray-500">{`(${user?.elo})`}</p>
+              <Image
+                src={authUser?.photoURL}
+                alt="User Profile Picture"
+                width={100}
+                height={100}
+                className="w-12 h-12 rounded-full"
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-md font-semibold">{opponent?.username}</p>
+              <p className="text-sm text-gray-500">{`(${opponent?.elo})`}</p>
+            </div>
           </div>
-        )}
-        <div className="p-4 border rounded-lg">
-          <p>סטטוס משחק: {room.gameData?.state}</p>
-          <p>מספר שחקנים: {room.userCount}</p>
+          <div className="p-4 mt-8 border rounded-lg">
+            <p>סטטוס משחק: {room.gameData?.state}</p>
+          </div>
         </div>
       </div>
     </PageLayout>

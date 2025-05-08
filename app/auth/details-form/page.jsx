@@ -58,6 +58,7 @@ const DetailsForm = () => {
       await saveUserObject(user, {
         username: formData.username,
         fullName: formData.fullName,
+        photoURL: user.photoURL,
         elo: formData.elo,
         topics: formData.topics, // Include selected topics
         userId: user.uid, // Include the auth user ID
