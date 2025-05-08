@@ -5,7 +5,8 @@ import { useAuth } from "@/context/AuthContext";
 import { getRoom, getRoomOpponent } from "@/lib/fastGameFunctions";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
 import PageLayout from "@/components/layout/PageLayout";
-import PlayersBar from "@/components/fastGame/PlayersBar";
+import PlayersBars from "@/components/fastGame/PlayersBars";
+import GameBar from "@/components/fastGame/GameBar";
 
 // Create a component that properly uses the params
 export default function GamePage({ params }) {
@@ -82,10 +83,8 @@ export default function GamePage({ params }) {
   return (
     <PageLayout>
       <div className="flex w-full h-full">
-        <div className="flex flex-1 flex-col items-center justify-center min-h-screen p-4">
-          <h1 className="text-2xl font-bold mb-4">חדר משחק: {id}</h1>
-        </div>
-        <PlayersBar room={room} user={user} opponent={opponent} />
+        <GameBar room={room} />
+        <PlayersBars room={room} user={user} opponent={opponent} />
       </div>
     </PageLayout>
   );

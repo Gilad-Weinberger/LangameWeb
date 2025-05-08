@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import PlayerScores from "./PlayerScores";
 import X from "./X";
 
 const PlayerBar = ({ room, user }) => {
@@ -34,7 +35,7 @@ const PlayerBar = ({ room, user }) => {
           alt="User Profile Picture"
           width={100}
           height={100}
-          className="w-16 h-16 mt-2"
+          className="w-[70px] h-[70px] mt-2"
         />
       ) : (
         <div className="w-16 h-16 mt-2 bg-gray-200 rounded-full flex items-center justify-center">
@@ -51,10 +52,11 @@ const PlayerBar = ({ room, user }) => {
       </div>
       <div className="mt-10">
         {scores.length > 0 ? (
-          <p className="text-3xl font-bold">{`${scores.length}`}</p>
+          <p className="text-3xl font-bold">{`${scores.length - fails}`}</p>
         ) : (
           <p className="text-3xl font-bold">--</p>
         )}
+        <PlayerScores scores={scores} />
       </div>
     </div>
   );
