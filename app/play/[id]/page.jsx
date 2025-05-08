@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, use } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { getRoom, getRoomOpponent } from "@/lib/fastGameFunctions";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
@@ -8,7 +8,7 @@ import PageLayout from "@/components/layout/PageLayout";
 
 // Create a component that properly uses the params
 export default function GamePage({ params }) {
-  const id = params.id;
+  const { id } = use(params);
   const { user: authUser } = useAuth();
   const [user, setUser] = useState(null);
   const [room, setRoom] = useState(null);
@@ -37,12 +37,12 @@ export default function GamePage({ params }) {
   useEffect(() => {
     const fetchRoom = async () => {
       if (!id || !user) return;
-      
+
       try {
         console.log(`Fetching room data for ID: ${id}`);
         const roomData = await getRoom(id);
         setRoom(roomData);
-        
+
         if (roomData) {
           const opponentId = await getRoomOpponent(id, user.id);
           if (opponentId) {
@@ -54,7 +54,7 @@ export default function GamePage({ params }) {
         console.error("Error fetching room or opponent:", error);
       }
     };
-    
+
     if (user && id) {
       fetchRoom();
     }
@@ -79,18 +79,19 @@ export default function GamePage({ params }) {
 
   return (
     <PageLayout>
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-2xl font-bold mb-4">חדר משחק: {id}</h1>
-      {opponent && (
-        <div className="mb-4">
-          <p>מתמודד: {opponent.username || opponent.id}</p>
-          <p>דירוג: {opponent.elo}</p>
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <h1 className="text-2xl font-bold mb-4">חדר משחק: {id}</h1>
+        {opponent && (
+          <div className="mb-4">
+            <p>מתמודד: {opponent.username || opponent.id}</p>
+            <p>דירוג: {opponent.elo}</p>
+          </div>
+        )}
+        <div className="p-4 border rounded-lg">
+          <p>סטטוס משחק: {room.gameData?.state}</p>
+          <p>מספר שחקנים: {room.userCount}</p>
         </div>
-      )}
-      <div className="p-4 border rounded-lg">
-        <p>סטטוס משחק: {room.gameData?.state}</p>
-        <p>מספר שחקנים: {room.userCount}</p>
       </div>
-    </div></PageLayout>
+    </PageLayout>
   );
 }
