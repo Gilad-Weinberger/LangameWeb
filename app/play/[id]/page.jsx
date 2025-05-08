@@ -8,7 +8,6 @@ import PageLayout from "@/components/layout/PageLayout";
 
 // Create a component that properly uses the params
 export default function GamePage({ params }) {
-  // We don't need to use React.use() in this approach, as params is passed as a prop
   const id = params.id;
   const { user: authUser } = useAuth();
   const [user, setUser] = useState(null);
