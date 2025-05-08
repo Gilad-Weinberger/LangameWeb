@@ -5,6 +5,7 @@ import { useAuth } from "@/context/AuthContext";
 import { getUserByAuthId } from "@/lib/firestoreFunctions";
 import PageLayout from "@/components/layout/PageLayout";
 import ButtonSession from "@/components/shared/ButtonSession";
+import { convertWordsToDB } from "@/lib/data/Words";
 
 const page = () => {
   const { user: authUser } = useAuth();
@@ -28,6 +29,7 @@ const page = () => {
     }
 
     fetchUserData();
+    convertWordsToDB();
   }, [authUser]);
 
   const handleFlashcardsClick = () => {
