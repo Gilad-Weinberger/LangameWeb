@@ -3,15 +3,16 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import PageLayout from "@/components/layout/PageLayout";
 import FormUserDetails from "@/components/auth/details-form/FormUserDetails";
 import FormEloQuiz from "@/components/auth/details-form/FormEloQuiz";
 import FormTopics from "@/components/auth/details-form/FormTopics";
 import FormCompletion from "@/components/auth/details-form/FormCompletion";
 import { saveUserObject } from "@/lib/firestoreFunctions";
+import { getUserByAuthId } from "@/lib/firestoreFunctions";
 
 const DetailsForm = () => {
-  const { user } = useAuth();
+  const { user: authUser } = useAuth();
+  const [user, setUser] = useState(null);
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -23,10 +24,22 @@ const DetailsForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    if (!user) {
+    if (!authUser) {
       router.push("/auth/signin");
+    } else {
+      const fetchUser = async () => {
+        const userObject = await getUserByAuthId(authUser);
+        setUser(userObject);
+        setFormData({
+          fullName: userObject?.fullName || "",
+          username: userObject?.username || "",
+          elo: userObject?.elo || 1200, // Default starting Elo
+          topics: userObject?.topics || [], // Array to store selected topics
+        });
+      };
+      fetchUser();
     }
-  }, [user, router]);
+  }, [authUser, router]);
 
   const nextStep = () => {
     setStep(step + 1);
@@ -55,13 +68,13 @@ const DetailsForm = () => {
   const submitForm = async () => {
     try {
       // Save user profile to Firestore
-      await saveUserObject(user, {
+      await saveUserObject(authUser, {
         username: formData.username,
         fullName: formData.fullName,
-        photoURL: user.photoURL,
+        photoURL: authUser.photoURL,
         elo: formData.elo,
         topics: formData.topics, // Include selected topics
-        userId: user.uid, // Include the auth user ID
+        userId: authUser.uid, // Include the auth user ID
       });
 
       console.log("Profile successfully updated");

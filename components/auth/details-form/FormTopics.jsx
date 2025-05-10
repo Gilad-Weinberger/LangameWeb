@@ -1,30 +1,13 @@
 "use client";
 import { useState } from "react";
 import { ButtonDetailsForm } from "@/components/ui/ButtonDetailsForm";
-
-const topics = [
-  { id: "programming", label: "תכנות" },
-  { id: "technology", label: "טכנולוגיה" },
-  { id: "science", label: "מדע" },
-  { id: "math", label: "מתמטיקה" },
-  { id: "language", label: "שפות" },
-  { id: "history", label: "היסטוריה" },
-  { id: "geography", label: "גאוגרפיה" },
-  { id: "arts", label: "אומנות" },
-  { id: "music", label: "מוזיקה" },
-  { id: "sports", label: "ספורט" },
-  { id: "movies", label: "סרטים" },
-  { id: "books", label: "ספרים" },
-  { id: "food", label: "אוכל" },
-  { id: "travel", label: "טיולים" },
-  { id: "games", label: "משחקים" },
-];
+import { topics } from "@/lib/data/Words";
 
 const FormTopics = ({
   nextStep,
   prevStep,
   handleTopicsChange,
-  selectedTopics,
+  selectedTopics = [],
 }) => {
   const [errors, setErrors] = useState({});
 
@@ -81,8 +64,8 @@ const FormTopics = ({
               ))}
             </div>
 
-            {errors.topics && (
-              <p className="mt-2 text-sm text-red-500">{errors.topics}</p>
+            {errors.categories && (
+              <p className="mt-2 text-sm text-red-500">{errors.categories}</p>
             )}
           </div>
 
