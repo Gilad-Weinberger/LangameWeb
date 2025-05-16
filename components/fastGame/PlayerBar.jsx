@@ -50,7 +50,7 @@ const PlayerBar = ({ room, user }) => {
           <X key={`fail-${i}`} failed={true} />
         ))}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 flex flex-col items-center">
         {scores.length > 0 ? (
           <p className="text-3xl font-bold">{`${scores.length - fails}`}</p>
         ) : (
